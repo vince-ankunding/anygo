@@ -32,16 +32,6 @@ chmod +x anygo.sh
 
 
 
-## 🚀 快速开始
-
-### 系统要求
-
-- Linux 系统 (CentOS/Debian/Ubuntu)
-- ROOT 权限
-- Docker (脚本自动安装)
-
-
-
 ## 📋 支持的协议
 
 ### 1. Xray Reality+Vision
