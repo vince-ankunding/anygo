@@ -1,22 +1,23 @@
 # anygo 多协议代理管理平台
 
-一个简洁高效的Xray Anytls服务端部署和Gost管理脚本
+一个70KB简洁高效的Xray Anytls服务端部署和Gost管理脚本
 
 基于经典 gost.sh 脚本改进，最新主流协议支持，实现服务端搭建、中转机、落地机的一体化线路优化控制
 
 
 
 
-### 一键使用
+### 一键复制安装
 
 ```bash
-wget --no-check-certificate -O https://ghfast.top/https://raw.githubusercontent.com/vince-ankunding/anygo/refs/heads/main/anygo.sh
+wget --no-check-certificate -O anygo.sh https://ghfast.top/https://raw.githubusercontent.com/vince-ankunding/anygo/refs/heads/main/anygo.sh
 chmod +x anygo.sh
 ./anygo.sh
+
 ```
 
 **不像其他脚本那样臃肿：**
-- ✅ 直接使用 Docker 官方高速镜像。拉取镜像-搭建成功-瞬间完成
+- ✅ 直接拉取官方docker镜像-搭建成功-瞬间完成
 - ✅ 所有服务统一管理，配置清晰可见
 - ❌ 不用担心被`apt update` 安装升级一大堆服务
 
