@@ -5,7 +5,7 @@
 
 - 基于经典 gost.sh 脚本改进，实现服务端搭建、中转机、落地机的一体化线路优化控制
 
-## 🎨 界面预览
+##  界面预览
 
 
 <img width="455" height="470" alt="image" src="https://github.com/user-attachments/assets/5723e2dd-e0d0-4dd9-9581-cb6443e1a0f7" />
