@@ -4,12 +4,14 @@
 基于经典 gost.sh 脚本改进，最新主流协议支持，实现服务端搭建、中转机、落地机的一体化线路优化控制
 
 
+
+
 ### 一键使用
 
 ```bash
 wget -O https://ghfast.top/https://raw.githubusercontent.com/vince-ankunding/anygo/refs/heads/main/anygo.sh
 chmod +x anygo.sh
-sudo ./anygo.sh
+./anygo.sh
 ```
 
 
