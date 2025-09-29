@@ -10,7 +10,7 @@
 ### 一键使用
 
 ```bash
-wget -O https://ghfast.top/https://raw.githubusercontent.com/vince-ankunding/anygo/refs/heads/main/anygo.sh
+wget --no-check-certificate -O https://ghfast.top/https://raw.githubusercontent.com/vince-ankunding/anygo/refs/heads/main/anygo.sh
 chmod +x anygo.sh
 ./anygo.sh
 ```
