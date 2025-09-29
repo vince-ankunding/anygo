@@ -4,6 +4,11 @@
 
 基于经典 gost.sh 脚本改进，最新主流协议支持，实现服务端搭建、中转机、落地机的一体化线路优化控制
 
+## 🎨 界面预览
+
+
+<img width="455" height="470" alt="image" src="https://github.com/user-attachments/assets/5723e2dd-e0d0-4dd9-9581-cb6443e1a0f7" />
+
 
 
 
@@ -214,11 +219,6 @@ A: 使用 GOST 的 TLS 隧道功能，中转机加密发送，落地机解密，
 
 **Q: 脚本会保留配置吗？**  
 A: 所有配置保存在 `/root/net-tools-anygo/`，重新运行脚本会保留现有配置
-
-## 🎨 界面预览
-
-
-<img width="455" height="470" alt="image" src="https://github.com/user-attachments/assets/5723e2dd-e0d0-4dd9-9581-cb6443e1a0f7" />
 
 
 
