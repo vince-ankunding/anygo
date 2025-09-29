@@ -238,6 +238,6 @@ A: 所有配置保存在 `/root/net-tools-anygo/`，重新运行脚本会保留�
 
 ---
 
-**版本:** v1.1.0  
-**风格:** doubi 经典简洁风  
-**更新:** 持续维护中
+v1.1.0  
+power by gost.sh cc codex
+
