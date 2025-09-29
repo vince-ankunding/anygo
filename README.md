@@ -3,6 +3,16 @@
 一个简洁高效的Xray Anytls服务端部署和Gost管理脚本
 基于经典 gost.sh 脚本改进，最新主流协议支持，实现服务端搭建、中转机、落地机的一体化线路优化控制
 
+
+### 一键使用
+
+```bash
+wget -O https://ghfast.top/https://raw.githubusercontent.com/vince-ankunding/anygo/refs/heads/main/anygo.sh
+chmod +x anygo.sh
+sudo ./anygo.sh
+```
+
+
 ## ✨ 核心特性
 
 - **🎨 清爽干净风格** - 继承清爽干净无冗余doubi一键脚本风格
@@ -29,13 +39,7 @@
 - ROOT 权限
 - Docker (脚本自动安装)
 
-### 一键安装
 
-```bash
-wget -O https://ghfast.top/https://raw.githubusercontent.com/vince-ankunding/anygo/refs/heads/main/anygo.sh
-chmod +x anygo.sh
-sudo ./anygo.sh
-```
 
 ## 📋 支持的协议
 
