@@ -217,10 +217,10 @@ A: 所有配置保存在 `/root/net-tools-anygo/`，重新运行脚本会保留�
 
 ## 🎨 界面预览
 
-```
+
 <img width="455" height="470" alt="image" src="https://github.com/user-attachments/assets/5723e2dd-e0d0-4dd9-9581-cb6443e1a0f7" />
 
-```
+
 
 ## 🤝 致谢
 
