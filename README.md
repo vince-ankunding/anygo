@@ -1,7 +1,7 @@
 # anygo 多协议代理管理平台
 
 - 一个70KB简洁高效的Xray Anytls服务端部署和Gost管理脚本
-- 一键搭建先进协议服务端`Xray Reality+Vision``Anytls``Gost`
+- 一键搭建先进协议服务端`Xray Reality+Vision` `Anytls` `Gost`
 
 - 基于经典 gost.sh 脚本改进，实现服务端搭建、中转机、落地机的一体化线路优化控制
 
