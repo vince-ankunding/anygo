@@ -19,7 +19,7 @@ LINE_BOX="══════════════════════"
 LINE_TABLE="------------------------------------------------------------------"
 
 
-WORKDIR="/root/net-tools-anygo"
+WORKDIR="/root/net-tools-Anygost"
 gost_conf_path="$WORKDIR/gost-config.json"
 raw_conf_path="$WORKDIR/rawconf"
 
@@ -185,7 +185,7 @@ check_service_status() {
 
   case "$service_name" in
     "xray")
-      if printf '%s\n' "$docker_names" | grep -q "^anygoxray$"; then
+      if printf '%s\n' "$docker_names" | grep -q "^Anygostxray$"; then
         status_info="${C_GREEN}●${C_RESET} ${XRAY_LABEL} 服务端"
       elif [ -f "$WORKDIR/xray-config.json" ]; then
         status_info="${C_RED}●${C_RESET} ${XRAY_LABEL} 服务端 (已停止)"
@@ -199,7 +199,7 @@ check_service_status() {
       fi
       ;;
     "gost")
-      if printf '%s\n' "$docker_names" | grep -q "^anygogost$"; then
+      if printf '%s\n' "$docker_names" | grep -q "^Anygostgost$"; then
         status_info="${C_GREEN}●${C_RESET} GOST 服务端"
       elif [ -f "$gost_conf_path" ]; then
         status_info="${C_RED}●${CRESET} GOST 服务端 (已停止)"
@@ -207,7 +207,7 @@ check_service_status() {
       ;;
     "shadowsocks")
       if [ -f "$raw_conf_path" ] && grep -q "^ss/" "$raw_conf_path" 2>/dev/null; then
-        if printf '%s\n' "$docker_names" | grep -q "^anygogost$"; then
+        if printf '%s\n' "$docker_names" | grep -q "^Anygostgost$"; then
           status_info="${C_GREEN}●${C_RESET} Shadowsocks 服务端"
         else
           status_info="${C_RED}●${C_RESET} Shadowsocks 服务端 (已停止)"
@@ -259,8 +259,8 @@ guard_gost() {
     local content=$(grep -v "^[[:space:]]*$" "$raw_conf_path" 2>/dev/null)
     if [[ -z "$content" ]]; then
       echo "检测到GOST配置为空，停止容器以避免持续重启"
-      docker stop anygogost 2>/dev/null || true
-      docker rm anygogost 2>/dev/null || true
+      docker stop Anygostgost 2>/dev/null || true
+      docker rm Anygostgost 2>/dev/null || true
       return 0
     fi
   fi
@@ -297,7 +297,7 @@ install_ss_server() {
 
 
   local gost_container_exists=false
-  if docker ps -a --format '{{.Names}}' | grep -q '^anygogost$'; then
+  if docker ps -a --format '{{.Names}}' | grep -q '^Anygostgost$'; then
     gost_container_exists=true
   fi
   if [ "$gost_container_exists" = false ]; then
@@ -494,7 +494,7 @@ url_encode() {
 
 install_xray_reality() {
   local XRAY_CONFIG="${WORKDIR}/xray-config.json"
-  local CONTAINER_NAME="anygoxray"
+  local CONTAINER_NAME="Anygostxray"
   local XRAY_IMAGE="ghcr.io/xtls/xray-core:latest"
 
   pick_port "xray 端口(回车随机10000-20000): " 10000 20000 || return 1
@@ -706,7 +706,7 @@ show_all_services_info() {
   ip_cached=$(get_public_ip)
 
 
-  local XRAY_CONFIG="/root/net-tools-anygo/xray-config.json"
+  local XRAY_CONFIG="/root/net-tools-Anygost/xray-config.json"
   if [ -f "$XRAY_CONFIG" ]; then
     has_services=true
     local ip port uuid sni pbk sid
@@ -729,7 +729,7 @@ show_all_services_info() {
   fi
 
 
-  local ANYTLS_CONFIG="/root/net-tools-anygo/anytls-config.json"
+  local ANYTLS_CONFIG="/root/net-tools-Anygost/anytls-config.json"
   if [ -f "$ANYTLS_CONFIG" ]; then
     has_services=true
     . "$ANYTLS_CONFIG"
@@ -814,8 +814,8 @@ service_management_menu() {
 
 
 manage_xray_service() {
-  local XRAY_CONFIG="/root/net-tools-anygo/xray-config.json"
-  local CONTAINER_NAME="anygoxray"
+  local XRAY_CONFIG="/root/net-tools-Anygost/xray-config.json"
+  local CONTAINER_NAME="Anygostxray"
 
 
   if [ ! -f "$XRAY_CONFIG" ]; then
@@ -883,7 +883,7 @@ manage_xray_service() {
 
 
 manage_anytls_service() {
-  local ANYTLS_CONFIG="/root/net-tools-anygo/anytls-config.json"
+  local ANYTLS_CONFIG="/root/net-tools-Anygost/anytls-config.json"
   local SERVICE_NAME="anytls"
 
 
@@ -965,7 +965,7 @@ manage_ss_service() {
     echo "$LINE_BOX"
 
 
-    if docker ps --format '{{.Names}}' | grep -q '^anygogost$'; then
+    if docker ps --format '{{.Names}}' | grep -q '^Anygostgost$'; then
       echo -e "服务状态: ${STATUS_RUNNING}"
     else
       echo -e "服务状态: ${STATUS_STOPPED}"
@@ -1335,9 +1335,9 @@ show_ss_connection_info() {
 update_gost_docker() {
   echo ""
   echo -e "正在更新 Gost Docker 镜像..."
-  docker stop anygogost 2>/dev/null || true
+  docker stop Anygostgost 2>/dev/null || true
   docker pull "${GOST_IMAGE}"
-  docker start anygogost 2>/dev/null || docker_run_gost
+  docker start Anygostgost 2>/dev/null || docker_run_gost
   echo -e "Gost Docker 镜像更新完成"
 }
 
@@ -1410,7 +1410,7 @@ modify_ss_encryption() {
 show_ss_logs() {
   echo ""
   echo -e "显示 Gost (SS) 服务日志 (Ctrl+C 退出):"
-  docker logs -f anygogost
+  docker logs -f Anygostgost
 }
 
 restart_ss_service() {
@@ -1423,7 +1423,7 @@ restart_ss_service() {
 stop_ss_service() {
   echo ""
   echo -e "正在停止 SS 服务..."
-  docker stop anygogost
+  docker stop Anygostgost
   echo -e "SS 服务已停止"
 }
 
@@ -1439,10 +1439,10 @@ regenerate_gost_config() {
   confstart
   writeconf
   conflast
-  if docker ps -a --format '{{.Names}}' 2>/dev/null | grep -q '^anygogost$'; then
-    if ! docker restart anygogost 2>/dev/null; then
+  if docker ps -a --format '{{.Names}}' 2>/dev/null | grep -q '^Anygostgost$'; then
+    if ! docker restart Anygostgost 2>/dev/null; then
       show_info "原有 GOST 容器重启失败，尝试重新创建..."
-      docker rm -f anygogost 2>/dev/null || true
+      docker rm -f Anygostgost 2>/dev/null || true
       docker_run_gost
     fi
   else
@@ -1463,7 +1463,7 @@ docker_run_gost() {
   fi
 
   local run_output
-  if ! run_output=$(docker run -d --name anygogost --network host --restart=always \
+  if ! run_output=$(docker run -d --name Anygostgost --network host --restart=always \
     -v "${gost_conf_path}:/gost/config.json" \
     "${GOST_IMAGE}" -C /gost/config.json 2>&1); then
     show_error "GOST 容器启动失败"
@@ -1489,7 +1489,7 @@ Install_ct() {
     chmod 777 "$gost_conf_path"
   fi
   local container_exists=false
-  if docker ps -a --format '{{.Names}}' 2>/dev/null | grep -q '^anygogost$'; then
+  if docker ps -a --format '{{.Names}}' 2>/dev/null | grep -q '^Anygostgost$'; then
     container_exists=true
     show_info "检测到已有 GOST 服务，重载配置后重启..."
   fi
@@ -1499,9 +1499,9 @@ Install_ct() {
   fi
 
   if [ "$container_exists" = true ]; then
-    if ! docker restart anygogost 2>/dev/null; then
+    if ! docker restart Anygostgost 2>/dev/null; then
       show_info "原有 GOST 容器重启失败，尝试重新创建..."
-      docker rm -f anygogost 2>/dev/null || true
+      docker rm -f Anygostgost 2>/dev/null || true
       if [ "$image_exists" = false ]; then
         docker pull "${GOST_IMAGE}"
         image_exists=true
@@ -1509,7 +1509,7 @@ Install_ct() {
       docker_run_gost
     fi
   else
-    docker rm -f anygogost 2>/dev/null || true
+    docker rm -f Anygostgost 2>/dev/null || true
     if [ "$image_exists" = false ]; then
       docker pull "${GOST_IMAGE}"
       image_exists=true
@@ -1517,7 +1517,7 @@ Install_ct() {
     docker_run_gost
   fi
   echo "------------------------------"
-  if docker ps --format '{{.Names}}' | grep -q '^anygogost$'; then
+  if docker ps --format '{{.Names}}' | grep -q '^Anygostgost$'; then
     echo "gost安装成功"
     rm -rf "$(pwd)"/gost
     rm -rf "$(pwd)"/gost.service
@@ -1531,7 +1531,7 @@ Install_ct() {
 }
 
 Uninstall_ct() {
-  docker rm -f anygogost 2>/dev/null || true
+  docker rm -f Anygostgost 2>/dev/null || true
 
   echo "gost已经成功删除"
 }
@@ -1542,12 +1542,12 @@ Start_ct() {
     echo "GOST配置为空，无法启动服务"
     return
   fi
-  docker start anygogost || docker_run_gost
+  docker start Anygostgost || docker_run_gost
   echo "已启动"
 }
 
 Stop_ct() {
-  docker stop anygogost || true
+  docker stop Anygostgost || true
   echo "已停止"
 }
 
@@ -1892,7 +1892,7 @@ delete_forwarding_rule() {
 while true; do
   clear
   echo
-  printf '  %b\n' "${C_GREEN}anygo 多协议代理管理平台${C_RESET}"
+  printf '  %b\n' "${C_GREEN}Anygost 多协议代理管理平台${C_RESET}"
   echo "  一键纯净搭建和管理 Reality/AnyTLS/GOST 服务端"
   echo "  无 apt update 等冗余操作，GOST/Xray 使用高速 Docker 官方镜像"
   echo "  配置文件路径${WORKDIR}/"
@@ -1957,14 +1957,14 @@ while true; do
 
     case "$un_num" in
       9)
-        docker rm -f anygoxray 2>/dev/null || true
-        rm -f /root/net-tools-anygo/xray-config.json || true
+        docker rm -f Anygostxray 2>/dev/null || true
+        rm -f /root/net-tools-Anygost/xray-config.json || true
         systemctl stop anytls 2>/dev/null || true
         systemctl disable anytls 2>/dev/null || true
         rm -f /etc/systemd/system/anytls.service 2>/dev/null || true
         systemctl daemon-reload 2>/dev/null || true
         rm -f /usr/local/bin/anytls-server /usr/local/bin/anytls-client 2>/dev/null || true
-        rm -f /root/net-tools-anygo/anytls-config.json 2>/dev/null || true
+        rm -f /root/net-tools-Anygost/anytls-config.json 2>/dev/null || true
         Uninstall_ct
         rm -f "$gost_conf_path" "$raw_conf_path"
         rm -rf "$WORKDIR"
@@ -1972,8 +1972,8 @@ while true; do
         show_success "全部服务端及配置文件已卸载"
         ;;
       1)
-        docker rm -f anygoxray 2>/dev/null || true
-        rm -f /root/net-tools-anygo/xray-config.json || true
+        docker rm -f Anygostxray 2>/dev/null || true
+        rm -f /root/net-tools-Anygost/xray-config.json || true
         echo
         show_success "${XRAY_LABEL} 服务已卸载"
         ;;
@@ -1983,7 +1983,7 @@ while true; do
         rm -f /etc/systemd/system/anytls.service 2>/dev/null || true
         systemctl daemon-reload 2>/dev/null || true
         rm -f /usr/local/bin/anytls-server /usr/local/bin/anytls-client 2>/dev/null || true
-        rm -f /root/net-tools-anygo/anytls-config.json 2>/dev/null || true
+        rm -f /root/net-tools-Anygost/anytls-config.json 2>/dev/null || true
         echo
         show_success "AnyTLS 服务已卸载"
         ;;
