@@ -1,6 +1,6 @@
 # anygo 多协议代理管理平台
 
-- 一个70KB简洁高效的Xray Anytls服务端部署和Gost管理脚本
+- 一个70KB简洁高效Xray Anytls服务端部署和Gost管理脚本，代码干净透明
 - 一键搭建先进协议服务端`Xray Reality+Vision` `Anytls` `Gost`
 
 - 基于经典 gost.sh 脚本改进，实现服务端搭建、中转机、落地机的一体化线路优化控制
@@ -53,9 +53,6 @@ chmod +x anygo.sh
 
 轻量级 TLS 伪装方案
 
-**技术细节:**
-- 使用 GitHub 官方预编译超小体积二进制
-- 低资源占用，高效稳定
 
 ### 3. GOST 多协议代理
 
@@ -70,7 +67,7 @@ chmod +x anygo.sh
 ### 4. Shadowsocks
 
 - 经典稳定的加密代理，墙内&隧道转发。
-- 脚本带github加速`wget --no-check-certificate https://ghfast.top` ， 国内精简主机也可用
+- 脚本带国内github加速`wget --no-check-certificate https://ghfast.top` 
 
 
 ## 🎯 主要功能
