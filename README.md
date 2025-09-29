@@ -16,9 +16,9 @@
 ### 一键复制安装
 
 ```bash
-wget --no-check-certificate -O Anygost.sh https://ghfast.top/https://raw.githubusercontent.com/vince-ankunding/Anygost/refs/heads/main/Anygost.sh
-chmod +x Anygost.sh
-./Anygost.sh
+wget --no-check-certificate -O anygost.sh https://ghfast.top/https://raw.githubusercontent.com/vince-ankunding/anygost/refs/heads/main/anygost.sh
+chmod +x anygost.sh
+./anygost.sh
 
 ```
 
@@ -117,7 +117,7 @@ chmod +x Anygost.sh
 ### 一体化线路方案
 
 ```
-用户端 → 中转机(Anygost) → 落地机(Anygost) → 目标
+用户端 → 中转机(anygost) → 落地机(anygost) → 目标
          ├── 部署代理服务端
          ├── GOST TLS 加密转发
          └── 统一管理界面
@@ -141,7 +141,7 @@ chmod +x Anygost.sh
 ### 配置文件结构
 
 ```
-/root/net-tools-Anygost/
+/root/net-tools-anygost/
 ├── xray-config.json      # Xray 服务配置
 ├── anytls-config.json    # AnyTLS 服务配置
 ├── gost-config.json      # GOST 服务配置（自动生成）
@@ -193,7 +193,7 @@ chmod +x Anygost.sh
 
 **对比传统脚本：**
 
-| 对比项 | 传统脚本 | Anygost |
+| 对比项 | 传统脚本 | anygost |
 |--------|---------|-------|
 | 依赖安装 | apt update + 多个包 | 仅需 Docker |
 | 部署时间 | 5-10 分钟 | 1-2 分钟 |
@@ -216,7 +216,7 @@ A: AnyTLS 是轻量级工具，systemd 管理更简洁，且便于查看日志�
 A: 使用 GOST 的 TLS 隧道功能，中转机加密发送，落地机解密，可串联多级
 
 **Q: 脚本会保留配置吗？**  
-A: 所有配置保存在 `/root/net-tools-Anygost/`，重新运行脚本会保留现有配置
+A: 所有配置保存在 `/root/net-tools-anygost/`，重新运行脚本会保留现有配置
 
 
 
