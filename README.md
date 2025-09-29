@@ -63,8 +63,8 @@ chmod +x anygo.sh
 
 ### 4. Shadowsocks
 
-经典稳定的加密代理，多用于墙内&隧道转发。
-脚本带wget --no-check-certificate https://ghfast.top github加速， 国内精简主机也适用
+- 经典稳定的加密代理，多用于墙内&隧道转发。
+- 脚本带wget --no-check-certificate https://ghfast.top github加速， 国内精简主机也适用
 
 
 ## 🎯 主要功能
