@@ -1,4 +1,4 @@
-# Anygo 多协议代理管理平台
+# Anygost 多协议代理管理平台
 
 - 一个70KB简洁高效Xray Anytls服务端部署和Gost管理脚本，代码干净透明
 - 一键搭建先进协议服务端`VLESS-TCP-XTLS-Vision-REALITY` `AnyTLS` `Gost`
@@ -16,9 +16,9 @@
 ### 一键复制安装
 
 ```bash
-wget --no-check-certificate -O anygo.sh https://ghfast.top/https://raw.githubusercontent.com/vince-ankunding/anygo/refs/heads/main/anygo.sh
-chmod +x anygo.sh
-./anygo.sh
+wget --no-check-certificate -O Anygost.sh https://ghfast.top/https://raw.githubusercontent.com/vince-ankunding/Anygost/refs/heads/main/Anygost.sh
+chmod +x Anygost.sh
+./Anygost.sh
 
 ```
 
@@ -117,7 +117,7 @@ chmod +x anygo.sh
 ### 一体化线路方案
 
 ```
-用户端 → 中转机(anygo) → 落地机(anygo) → 目标
+用户端 → 中转机(Anygost) → 落地机(Anygost) → 目标
          ├── 部署代理服务端
          ├── GOST TLS 加密转发
          └── 统一管理界面
@@ -141,7 +141,7 @@ chmod +x anygo.sh
 ### 配置文件结构
 
 ```
-/root/net-tools-anygo/
+/root/net-tools-Anygost/
 ├── xray-config.json      # Xray 服务配置
 ├── anytls-config.json    # AnyTLS 服务配置
 ├── gost-config.json      # GOST 服务配置（自动生成）
@@ -193,7 +193,7 @@ chmod +x anygo.sh
 
 **对比传统脚本：**
 
-| 对比项 | 传统脚本 | anygo |
+| 对比项 | 传统脚本 | Anygost |
 |--------|---------|-------|
 | 依赖安装 | apt update + 多个包 | 仅需 Docker |
 | 部署时间 | 5-10 分钟 | 1-2 分钟 |
@@ -216,7 +216,7 @@ A: AnyTLS 是轻量级工具，systemd 管理更简洁，且便于查看日志�
 A: 使用 GOST 的 TLS 隧道功能，中转机加密发送，落地机解密，可串联多级
 
 **Q: 脚本会保留配置吗？**  
-A: 所有配置保存在 `/root/net-tools-anygo/`，重新运行脚本会保留现有配置
+A: 所有配置保存在 `/root/net-tools-Anygost/`，重新运行脚本会保留现有配置
 
 
 
